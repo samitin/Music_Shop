@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class OrderActivity extends AppCompatActivity {
 
@@ -38,12 +39,16 @@ public class OrderActivity extends AppCompatActivity {
     public void submitOrder(View view) {
 
         Intent intent=new Intent(Intent.ACTION_SENDTO);
+
         intent.setData(Uri.parse("mailTo"));
+        intent.setType("*/*");
         intent.putExtra(intent.EXTRA_EMAIL,adresses);
         intent.putExtra(intent.EXTRA_SUBJECT,subject);
         intent.putExtra(intent.EXTRA_TEXT,emailText);
         if(intent.resolveActivity(getPackageManager())!=null)
             startActivity(intent);
+        else
+            Toast.makeText(this,"ошибка",Toast.LENGTH_SHORT).show();
         Log.d("sumitOrder","Кнопка нажата");
     }
 }

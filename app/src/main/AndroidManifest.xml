@@ -19,14 +19,19 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".OrderActivity"
-                  android:label="Your older">
-        <intent-filter>
-            <action
-                android:name="android.intent.action.SENDTO" />
-            <data android:scheme="mailto" />
-            <category
-                android:name="android.intent.category.DEFAULT" />
-        </intent-filter>
+                  android:label="@string/order">
+
+            <intent-filter>
+                <action android:name="android.intent.action.SEND"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <data android:mimeType="text/plain"/>
+                <data android:mimeType="image/*"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.SENDTO" />
+                <data android:scheme="mailto" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
     </activity>
         <activity android:name=".MainActivity">
             <intent-filter>
